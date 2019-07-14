@@ -17,7 +17,7 @@ class CreateInvoicesTable extends Migration
             $table->bigIncrements('id');
             $table->date('issue_date');
             $table->date('due_date');
-            $table->string('name');
+            $table->string('status');
             $table->timestamps();
         });
     }

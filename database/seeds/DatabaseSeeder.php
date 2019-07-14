@@ -35,20 +35,20 @@ class DatabaseSeeder extends Seeder
             Invoice::create([
                 'issue_date' => '2019-6-'.mt_rand(1, 28),
                 'due_date' => '2019-6-'.mt_rand(1, 28),
-                'status' => $faker->randomElement('sent', 'paid')
+                'status' => $faker->randomElement(['sent', 'paid'])
             ]);
         }
 
         foreach(range(1, 100) as $i) {
             Payment::create([
                 'payment_date' => '2019-6-'.mt_rand(1, 28),
-                'status' => $faker->randomElement('undeposited', 'deposited')
+                'status' => $faker->randomElement(['undeposited', 'deposited'])
             ]);
         }
 
         foreach(range(1, 100) as $i) {
             Opportunity::create([
-                'status' => $faker->randomElement('new', 'lost')
+                'status' => $faker->randomElement(['new', 'lost', 'won'])
             ]);
         }
     }
