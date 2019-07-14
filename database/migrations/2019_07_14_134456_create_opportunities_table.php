@@ -15,6 +15,7 @@ class CreateOpportunitiesTable extends Migration
     {
         Schema::create('opportunities', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('status');
             $table->timestamps();
         });
     }
