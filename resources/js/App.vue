@@ -28,10 +28,17 @@
 </template>
 <script>
 import { Cartesian, Area } from 'laue'
+import axios from 'axios'
 export default {
     components: {
         LaCartesian: Cartesian,
         LaArea: Area
+    },
+    mounted() {
+        axios.get('/api/dashboard')
+            .then((res) => {
+                this.$set(this.$data, 'cards', res.data.cards)
+            })
     },
     data() {
         return {
