@@ -5767,23 +5767,35 @@ var render = function() {
         _vm._l(_vm.cards, function(card) {
           return _c("div", { staticClass: "card-item" }, [
             _c("div", { staticClass: "card-inner" }, [
-              _c("div", { staticClass: "card-title" }, [_vm._v("Card Title")]),
+              _c("div", { staticClass: "card-title" }, [
+                _vm._v(_vm._s(card.title))
+              ]),
               _vm._v(" "),
-              _c("div", { staticClass: "card-value" }, [_vm._v("100")]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "card-chart" },
-                [
-                  _c(
-                    "la-cartesian",
-                    { attrs: { width: 275, height: 40, data: _vm.values } },
-                    [_c("la-area", { attrs: { animated: "", prop: "value" } })],
+              card.type === "value"
+                ? _c("div", { staticClass: "card-value" }, [
+                    _vm._v(_vm._s(card.value))
+                  ])
+                : _c(
+                    "div",
+                    { staticClass: "card-chart" },
+                    [
+                      _c(
+                        "la-cartesian",
+                        { attrs: { width: 275, height: 40, data: card.value } },
+                        [
+                          _c("la-area", {
+                            attrs: {
+                              color: card.color,
+                              animated: "",
+                              prop: "value"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
                     1
                   )
-                ],
-                1
-              )
             ])
           ])
         }),

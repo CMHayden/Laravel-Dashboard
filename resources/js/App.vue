@@ -13,11 +13,11 @@
             <div class="card-row">
                 <div class="card-item" v-for="card in cards">
                     <div class="card-inner">
-                        <div class="card-title">Card Title</div>
-                        <div class="card-value">100</div>
-                        <div class="card-chart">
-                            <la-cartesian :width="275" :height="40" :data="values">
-                                <la-area animated prop="value"></la-area>
+                        <div class="card-title">{{card.title}}</div>
+                        <div class="card-value" v-if="card.type === 'value'">{{card.value}}</div>
+                        <div class="card-chart" v-else>
+                            <la-cartesian :width="275" :height="40" :data="card.value">
+                                <la-area :color="card.color" animated prop="value"></la-area>
                             </la-cartesian>
                         </div>
                     </div>
